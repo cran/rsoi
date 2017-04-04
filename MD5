@@ -1,0 +1,11 @@
+ebf0a97b523ff6f7b725f90dfc79dbb4 *DESCRIPTION
+2b1389b9f62bdb06a974b8d7a3966722 *NAMESPACE
+97247dc526466073801f66317f452e4f *NEWS.md
+6fc41080028761a076c1c25d1463e014 *R/data.R
+90b0ec5d1239a91d6df1b172f9dff106 *R/download-enso.R
+25d152bfc39b2809f39054b9b09a39e6 *README.md
+c7835e43c07fc000ee0b204783847375 *data/enso.rda
+10f1971baddb129ed79115730e4e3718 *man/download_enso.Rd
+79831b00f3c73433e430b31ad9a3ad72 *man/enso.Rd
+a7f61aa021637892b8ad823930fccab0 *tests/testthat.R
+2f463c3265bce7e09536ecf1b1d8deb3 *tests/testthat/test_download_soi.R
