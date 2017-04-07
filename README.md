@@ -1,4 +1,4 @@
-[![Travis-CI Build Status](https://travis-ci.org/boshek/rsoi.svg?branch=master)](https://travis-ci.org/boshek/rsoi) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/boshek/rsoi?branch=master&svg=true)](https://ci.appveyor.com/project/boshek/rsoi)
+[![Travis-CI Build Status](https://travis-ci.org/boshek/rsoi.svg?branch=master)](https://travis-ci.org/boshek/rsoi) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/boshek/rsoi?branch=master&svg=true)](https://ci.appveyor.com/project/boshek/rsoi)[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/rsoi)](https://cran.r-project.org/package=rsoi) [![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/rsoi)](https://CRAN.R-project.org/package=rsoi)
 
 rsoi
 ------------------
@@ -6,9 +6,14 @@ An R package to download the most up to date Southern Oscillation Index and Ocea
 
 Installation
 ------------------
+To install and load the CRAN version
+
+    install.package("rsoi")
+    library(rsoi)
+
 To install and load the development version from GitHub
 
-    devtools::install_github("rsoi")
+    devtools::install_github("rsoi", ref = "v0.2.0")
     library(rsoi)
     
 Example
