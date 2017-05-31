@@ -18,7 +18,7 @@
 #' \item Year: Year of record
 #' \item dSST3.4: Monthly change in sea surface temperature at Nino region 3.4
 #' \item ONI: Oneanic Oscillation Index
-#' \item month_window: 3 month period over which ONI is calculated
+#' \item ONI_month_window: 3 month period over which the Oneanic Oscillation Index is calculated
 #' \item phase: ENSO phase  
 #' \item SOI: Southern Oscillation Index
 #' \item SOI_3MON_AVG: 3 Month Average Southern Oscillation Index
@@ -64,7 +64,7 @@ download_enso <- function(create_csv = FALSE) {
   ## Create 3 month average window. Each row is a month
   oni$ONI = as.numeric(stats::filter(oni$dSST3.4,rep(1/3,3), sides=2))
   
-  oni$month_window <- sapply(1:nrow(oni),function(x) paste(substr(oni$Month[x-1],1,1),
+  oni$ONI_month_window <- sapply(1:nrow(oni),function(x) paste(substr(oni$Month[x-1],1,1),
                                                            substr(oni$Month[x],1,1),
                                                            substr(oni$Month[x+1],1,1),
                                                            sep=""))
@@ -82,7 +82,7 @@ download_enso <- function(create_csv = FALSE) {
     utils::write.csv(enso, file = paste0("SOI_ONI_Index_",max(soi$Date),".csv"), row.names = FALSE)
   }
   
-  return(enso)
+  return(tibble::as_tibble(enso))
   
 
 }

@@ -11,16 +11,11 @@ To install and load the CRAN version
     install.package("rsoi")
     library(rsoi)
 
-To install and load the development version from GitHub
-
-    devtools::install_github("rsoi", ref = "v0.2.0")
-    library(rsoi)
-    
 Example
 ------------------
 
     enso <- download_enso()
-    head(enso)
+    enso
 
 
 Inspired by
