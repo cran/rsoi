@@ -1,11 +1,11 @@
-fb7a866302b3f4ba116363800222cd1c *DESCRIPTION
+3827636d9f457b187f6ddc80ea1c9fe7 *DESCRIPTION
 2b1389b9f62bdb06a974b8d7a3966722 *NAMESPACE
 186a708cca94c1faba476aa8b7f7e680 *NEWS.md
 2f3e90957b868a6190a11ecadacd43e5 *R/data.R
 56af1a9dcb63fe58818405f32ac99b6e *R/download-enso.R
 fc3af2cd10801739359c173c1cfbcbc1 *README.md
-e4681abe1df20db0899f34b449d1c7b2 *data/enso.rda
+4e52269851f855ab6ccd60334442a14f *data/enso.rda
 d8d50988f30b8337909e767d8b3f2923 *man/download_enso.Rd
 141eace7e411e45d9464aaa781929708 *man/enso.Rd
 a7f61aa021637892b8ad823930fccab0 *tests/testthat.R
-07115892d18dac889fa85b0498c0fcc1 *tests/testthat/test_download_soi.R
+b6ec1981fd73b31b284fd9c9a001b33e *tests/testthat/test_download_soi.R
