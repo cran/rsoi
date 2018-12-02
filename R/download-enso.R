@@ -1,7 +1,7 @@
 #' @export
 #' @title Download Southern Oscillation Index and Oceanic Nino Index data
 #' 
-#' @param climate_idx Choose which ENSO related climate index to output. Current arguments supported are soi (the Southern Oscillation Index), oni (the Oceanic Nino Index), npgo (the North Pacific Gyre Oscillation) and all. all outputs each supported index variable as a slimmer dataset than each individual cliamte index call.   
+#' @param climate_idx Choose which ENSO related climate index to output. Current arguments supported are soi (the Southern Oscillation Index), oni (the Oceanic Nino Index), npgo (the North Pacific Gyre Oscillation) and all. all outputs each supported index variable as a slimmer dataset than each individual climate index call.   
 #' 
 #' @param create_csv Logical option to create a local copy of the data. Defaults to FALSE.
 #' 
@@ -18,7 +18,7 @@
 #' \item Date: Date object that uses the first of the month as a placeholder. Date formatted as date on the first of the month because R only supports one partial of date time
 #' \item Month: Month of record
 #' \item Year: Year of record
-#' \item ONI: Oneanic Oscillation Index
+#' \item ONI: Oceanic Oscillation Index
 #' \item phase: ENSO phase 
 #' \item SOI: Southern Oscillation Index
 #' \item NPGO: North Pacific Gyre Oscillation
@@ -31,41 +31,46 @@
 #' @references \url{https://www.ncdc.noaa.gov/teleconnections/enso/indicators/soi/} and \url{http://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt}
 
 
-download_enso <- function(climate_idx = "all", create_csv = FALSE) {
+download_enso <- function(climate_idx = c("all", "soi", "oni","npgo"), create_csv = FALSE) {
   
-  if(climate_idx == "soi") {
-    soi_df = rsoi::download_soi()
+  match.arg(climate_idx)
+  
+  if(climate_idx[1] == "soi") {
+    soi_df = download_soi()
     return(soi_df)
   } 
   
-  if(climate_idx == "oni") {
-    oni_df = rsoi::download_oni()
+  if(climate_idx[1] == "oni") {
+    oni_df = download_oni()
     return(oni_df)
   } 
   
-  if(climate_idx == "npgo") {
-    npgo_df = rsoi::download_npgo()
+  if(climate_idx[1] == "npgo") {
+    npgo_df = download_npgo()
     return(npgo_df)
   }
   
-  if(climate_idx == "all"){
+  if(create_csv==TRUE){
+    write.csv(enso, "ENSO_Index.csv")
+  }
+  
+  
+  if(climate_idx[1] == "all"){
   ## Join index data
-    oni_df = rsoi::download_oni()
-    soi_df = rsoi::download_soi()
-    npgo_df = rsoi::download_npgo()
-    enso <- dplyr::full_join(oni_df, soi_df,  by = c("Date","Month","Year"))
-    enso <- dplyr::full_join(enso, npgo_df,  by = c("Date","Month","Year"))
+    oni_df = download_oni()
+    soi_df = download_soi()
+    npgo_df = download_npgo()
+    enso <- merge(oni_df, soi_df)
+    enso <- merge(enso, npgo_df)
     enso <- enso[,c("Date", "Year", "Month", "ONI", "phase", "SOI", "NPGO")]
+    
+    class(enso) <- c("tbl_df", "tbl", "data.frame") 
     return(enso)
   }
   
   
   
-  if(create_csv==TRUE){
-    readr::write_csv(enso, "ENSO_Index.csv")
-  }
-  
-  #return(enso)
+
 
 }
 
