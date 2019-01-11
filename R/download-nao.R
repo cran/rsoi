@@ -11,7 +11,9 @@
 #' }
 
 #' @examples
+#' \dontrun{
 #' nao <- download_nao()
+#' }
 #'
 #' @references \url{https://www.ncdc.noaa.gov/teleconnections/nao}
 
@@ -20,9 +22,15 @@
 ## Function to download ONI data
 download_nao <- function(){
   
+  if(!curl::has_internet()){
+    return(message("A working internet connection is required to download and import the climate indices."))
+  }
+  
   nao_link ="https://www.ncdc.noaa.gov/teleconnections/nao/data.csv"
   
-  nao = read.csv(nao_link, 
+  res <- check_response(nao_link)
+  
+  nao = read.csv(res, 
                    col.names = c("Date","NAO"),
                    skip = 1,
                    stringsAsFactors = FALSE)

@@ -20,7 +20,9 @@
 #' }
 
 #' @examples
+#' \dontrun{
 #' oni <- download_oni()
+#' }
 #'
 #' @references \url{http://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt}
 
@@ -28,10 +30,16 @@
 
 ## Function to download ONI data
 download_oni <- function(){
+  
+  if(!curl::has_internet()){
+    return(message("A working internet connection is required to download and import the climate indices."))
+  }
 
   oni_link ="http://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt"
+  
+  res = check_response(oni_link)
 
-  oni = read.table(oni_link, 
+  oni = read.table(res, 
                    col.names = c("Year","Month","TOTAL","ClimAdjust","dSST3.4"),
                    skip = 1,
                    stringsAsFactors = FALSE)
@@ -53,12 +61,12 @@ download_oni <- function(){
                                                                sep=""))
   
   ## Assign phase 
-  oni$phase = factor(ifelse(oni$ONI >= 0.5,"Warm Phase/La Nina",
-                            ifelse(oni$ONI<= -0.5, "Cool Phase/El Nino", "Neutral Phase")))
+  oni$phase = factor(ifelse(oni$ONI >= 0.5,"Cool Phase/La Nina",
+                            ifelse(oni$ONI<= -0.5, "Warm Phase/El Nino", "Neutral Phase")))
   
   class(oni) <- c("tbl_df", "tbl", "data.frame") 
   
-  oni[,c("Date", "Month", "Year", "ONI", "ONI_month_window", "phase")]
+  oni[,c("Date", "Month", "Year","dSST3.4", "ONI", "ONI_month_window", "phase")]
   
   
   

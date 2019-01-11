@@ -11,15 +11,25 @@
 #' \item Month: Month of record
 #' \item NPGO: North Pacific Gyre Oscillation
 #' }
-
 #' @examples
+#' \dontrun{
 #' npgo <- download_npgo()
+#' }
 #'
 #' @references \url{http://www.oces.us/npgo} 
 
 
 download_npgo <- function() {
-  npgo <- read.table("http://www.oces.us/npgo/data/NPGO.txt", 
+  
+  if(!curl::has_internet()){
+    return(message("A working internet connection is required to download and import the climate indices."))
+  }
+  
+  npgo_link ="http://www.oces.us/npgo/data/NPGO.txt"
+  
+  res = check_response(npgo_link)
+  
+  npgo <- read.table(res, 
                      comment.char = "#",
                      col.names = c("Year","Month","NPGO"),
                      stringsAsFactors = FALSE)
