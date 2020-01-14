@@ -1,6 +1,7 @@
 #' @export
 #' @title Download Southern Oscillation Index data
 #' 
+#' @inheritParams download_oni
 #' 
 #' @description The Southern Oscillation Index is defined as the standardized difference between barometric readings at Darwin, Australia and Tahiti. 
 #' 
@@ -20,15 +21,15 @@
 #' }
 #'
 #' @references \url{https://www.ncdc.noaa.gov/teleconnections/enso/indicators/soi/} 
-
+download_soi <- function(use_cache = FALSE, file = NULL) {
+  with_cache(use_cache = use_cache, file = file, 
+             memoised = download_soi_memoised, 
+             unmemoised = download_soi_unmemoised, 
+             read_function = read_soi)
+}
 
 ## Function to bring in SOI data
-download_soi <- function(){
-  
-  if(!curl::has_internet()){
-    return(message("A working internet connection is required to download and import the climate indices."))
-  }
-  
+download_soi_unmemoised <- function(){
   soi_link = "https://www.ncdc.noaa.gov/teleconnections/enso/indicators/soi/data.csv"
   
   res = check_response(soi_link)
@@ -45,13 +46,24 @@ download_soi <- function(){
   
   ## Create Year and Month columns
   soi$Month = abbr_month(soi$Date)
-  soi$Year = format(soi$Date, "%Y")
+  soi$Year = as.integer(format(soi$Date, "%Y"))
   
   ## Create 3 month average window. Each row is a month
   soi$SOI_3MON_AVG = as.numeric(stats::filter(soi$SOI,rep(1/3,3), sides=2))
   
   class(soi) <- c("tbl_df", "tbl", "data.frame") 
   
-  soi[,c("Date", "Month", "Year", "SOI", "SOI_3MON_AVG")]
+  soi[,c("Year", "Month", "Date", "SOI", "SOI_3MON_AVG")]
 
+}
+
+download_soi_memoised <- memoise::memoise(download_soi_unmemoised)
+
+read_soi <- function(file) {
+  data <- read.csv(file)
+  data$Date <- as.Date(data$Date)
+  data$Month <- abbr_month(data$Date)
+  data$Year <- as.integer(data$Year)
+  class(data) <- c("tbl_df", "tbl", "data.frame")
+  data
 }

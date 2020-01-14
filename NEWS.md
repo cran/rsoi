@@ -1,4 +1,13 @@
 # rsoi NEWS
+## rsoi v0.5.1
+* Reverts El Nino/ La Nina mixup (Thanks to Arthur Chapman for the email submitted patch)
+* Remove rpdo and devtools from Suggests
+* Fix bug in `download_enso()`'s ability to save data to .csv
+* Download functions respect machine locale. 
+* Download functions can optionally cache data to memory or disk. 
+* Standard data types and column order.
+* Add Antarctic Oscillation. #27
+
 ## rsoi v0.5.0
 * Checks if internet is installed
 * Fixes El Nino/ La Nina mixup. 

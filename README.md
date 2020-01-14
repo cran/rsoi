@@ -12,15 +12,23 @@ Status](https://ci.appveyor.com/api/projects/status/github/boshek/rsoi?branch=ma
 [![CRAN
 Downloads](https://cranlogs.r-pkg.org/badges/rsoi?color=brightgreen)](https://CRAN.R-project.org/package=rsoi)
 [![cran
-checks](https://cranchecks.info/badges/worst/rsoi)](https://cran.rstudio.com/web/checks/check_results_rsoi.html)
+checks](https://cranchecks.info/badges/worst/rsoi)](https://cran.r-project.org/web/checks/check_results_rsoi.html)
 
-## rsoi
+# rsoi
 
-An R package to download the most up to date - Southern Oscillation
-Index - Oceanic Nino Index - North Pacific Gyre Oscillation data - North
-Atlantic Oscillation - Arctic Oscillation
+An R package to download the most up to date of these climate indices:
+
+  - Southern Oscillation Index
+  - Oceanic Nino Index
+  - North Pacific Gyre Oscillation
+  - North Atlantic Oscillation
+  - Arctic Oscillation
+  - Antarctic Oscillation
+  - Multivariate ENSO Index Version 2
 
 ## Installation
+
+For the development version
 
 ``` r
 install.packages("rsoi")
@@ -35,24 +43,19 @@ Download Oceanic Nino Index data
 
 ``` r
 oni <- download_oni()
-oni
-#> # A tibble: 827 x 7
-#>    Date       Month  Year dSST3.4     ONI ONI_month_window phase           
-#>    <date>     <ord> <int>   <dbl>   <dbl> <chr>            <fct>           
-#>  1 1950-01-01 Jan    1950   -1.62  NA     JF               <NA>            
-#>  2 1950-02-01 Feb    1950   -1.32  -1.34  JFM              Warm Phase/El N~
-#>  3 1950-03-01 Mar    1950   -1.07  -1.17  FMA              Warm Phase/El N~
-#>  4 1950-04-01 Apr    1950   -1.11  -1.18  MAM              Warm Phase/El N~
-#>  5 1950-05-01 May    1950   -1.37  -1.07  AMJ              Warm Phase/El N~
-#>  6 1950-06-01 Jun    1950   -0.74  -0.85  MJJ              Warm Phase/El N~
-#>  7 1950-07-01 Jul    1950   -0.44  -0.533 JJA              Warm Phase/El N~
-#>  8 1950-08-01 Aug    1950   -0.42  -0.423 JAS              Neutral Phase   
-#>  9 1950-09-01 Sep    1950   -0.41  -0.383 ASO              Neutral Phase   
-#> 10 1950-10-01 Oct    1950   -0.32  -0.443 SON              Neutral Phase   
-#> # ... with 817 more rows
+head(oni)
+#> # A tibble: 6 x 7
+#>   Date       Month  Year dSST3.4   ONI ONI_month_window phase             
+#>   <date>     <ord> <int>   <dbl> <dbl> <chr>            <fct>             
+#> 1 1950-01-01 Jan    1950   -1.62 NA    JF               <NA>              
+#> 2 1950-02-01 Feb    1950   -1.32 -1.34 JFM              Warm Phase/El Nino
+#> 3 1950-03-01 Mar    1950   -1.07 -1.17 FMA              Warm Phase/El Nino
+#> 4 1950-04-01 Apr    1950   -1.11 -1.18 MAM              Warm Phase/El Nino
+#> 5 1950-05-01 May    1950   -1.37 -1.07 AMJ              Warm Phase/El Nino
+#> 6 1950-06-01 Jun    1950   -0.74 -0.85 MJJ              Warm Phase/El Nino
 ```
 
-And a quick plot with base R to illustrate the type of data:
+And a quick plot to illustrate the data:
 
 ``` r
 barcols <- c('#edf8b1','#7fcdbb','#2c7fb8')
@@ -73,16 +76,20 @@ github page can be found here:
 
 ## Data Sources
 
-  - Southern Oscillation Index
+  - Southern Oscillation Index:
     <https://www.ncdc.noaa.gov/teleconnections/enso/indicators/soi/>
-  - Oceanic Nino Index data
+  - Oceanic Nino Index data:
     <http://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt>
-  - Northern Pacific Gyre Oscillation
+  - Northern Pacific Gyre Oscillation:
     <http://www.o3d.org/npgo/data/NPGO.txt>
-  - North Atlantic Oscillation
+  - North Atlantic Oscillation:
     <https://www.ncdc.noaa.gov/teleconnections/nao/data.csv>
-  - Arctic Oscillation
+  - Arctic Oscillation:
     <https://www.ncdc.noaa.gov/teleconnections/ao/data.csv>
+  - Anarctic Oscillation:
+    <https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/monthly.aao.index.b79.current.ascii>
+  - Multivariate ENSO Index Version 2 (MEI.v2):
+    <https://www.esrl.noaa.gov/psd/enso/mei/>
 
 ## Helpful References
 
@@ -100,5 +107,6 @@ pressure variations to
 ENSO](http://onlinelibrary.wiley.com/doi/10.1002/2014JD022221/pdf)
 
 Please note that the ‘rsoi’ project is released with a [Contributor Code
-of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you
-agree to abide by its terms.
+of
+Conduct](https://github.com/boshek/rsoi/blob/master/CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.
