@@ -16,7 +16,7 @@
 #' nao <- download_nao()
 #' }
 #'
-#' @references \url{https://www.ncdc.noaa.gov/teleconnections/nao}
+#' @references \url{https://www.ncdc.noaa.gov/teleconnections/nao/}
 
 download_nao <- function(use_cache = FALSE, file = NULL) {
   with_cache(use_cache = use_cache, file = file, 
@@ -29,7 +29,13 @@ download_nao <- function(use_cache = FALSE, file = NULL) {
 download_nao_unmemoised <- function(){
   nao_link ="https://www.ncdc.noaa.gov/teleconnections/nao/data.csv"
   
-  res <- check_response(nao_link)
+  res <- tryCatch(
+    check_response(nao_link),
+    error = function(e) {
+      message(e)
+      return(invisible(NULL))
+    }
+  )
   
   nao = read.csv(res, 
                    col.names = c("Date","NAO"),

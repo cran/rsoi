@@ -18,7 +18,7 @@
 #' npgo <- download_npgo()
 #' }
 #'
-#' @references \url{http://www.oces.us/npgo} 
+#' @references \url{http://www.oces.us/npgo/} 
 download_npgo <- function(use_cache = FALSE, file = NULL) {
   with_cache(use_cache = use_cache, file = file, 
              memoised = download_npgo_memoised, 
@@ -31,7 +31,13 @@ download_npgo <- function(use_cache = FALSE, file = NULL) {
 download_npgo_unmemoised <- function() {
   npgo_link ="http://www.oces.us/npgo/data/NPGO.txt"
   
-  res = check_response(npgo_link)
+  res = tryCatch(
+    check_response(npgo_link),
+    error = function(e) {
+      message(e)
+      return(invisible(NULL))
+    }
+  )
   
   npgo <- read.table(res, 
                      comment.char = "#",
