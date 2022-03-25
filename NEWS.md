@@ -1,4 +1,7 @@
 # rsoi NEWS
+## rsoi v0.5.5
+* Adds Dipole Mode Index. #42
+* Fix a row numbering error
 
 ## rsoi v0.5.4
 * Catch network errors gracefully and return informative error
