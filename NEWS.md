@@ -1,4 +1,9 @@
 # rsoi NEWS
+## rsoi v0.5.6
+* Adds the asymmetric and symmetric SAM indices #47
+* Accommodate data change for NAO
+* Fix NAO and AO redirects
+
 ## rsoi v0.5.5
 * Adds Dipole Mode Index. #42
 * Fix a row numbering error

@@ -16,7 +16,7 @@
 #' nao <- download_nao()
 #' }
 #'
-#' @references \url{https://www.ncdc.noaa.gov/teleconnections/nao/}
+#' @references \url{https://www.ncei.noaa.gov/access/monitoring/nao/}
 
 download_nao <- function(use_cache = FALSE, file = NULL) {
   with_cache(use_cache = use_cache, file = file, 
@@ -39,7 +39,8 @@ download_nao_unmemoised <- function(){
   
   nao = read.fwf(nao_link, 
                 widths = c(4, rep(7, 12)),
-                header = FALSE, 
+                header = FALSE,
+                skip = 1, 
                 col.names = c("Year", month.abb))
   
   reshaped_list <- lapply(
