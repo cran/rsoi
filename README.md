@@ -1,8 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![License: GPL
-v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![R-CMD-check](https://github.com/boshek/rsoi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/boshek/rsoi/actions/workflows/R-CMD-check.yaml)
 
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/rsoi)](https://cran.r-project.org/package=rsoi)
@@ -57,11 +55,17 @@ head(oni)
 And a quick plot to illustrate the data:
 
 ``` r
-barcols <- c('#edf8b1','#7fcdbb','#2c7fb8')
+barcols <- c('#edf8b1', '#7fcdbb', '#2c7fb8')
 
-barplot(oni$ONI, names.arg = oni$Date, ylab = "Oceanic Nino Index" , 
-    col = barcols[oni$phase], border = NA, space = 0,
-    xaxt = "n")
+barplot(
+  oni$ONI,
+  names.arg = oni$Date,
+  ylab = "Oceanic Nino Index",
+  col = barcols[oni$phase],
+  border = NA,
+  space = 0,
+  xaxt = "n"
+)
 ```
 
 ![](man/figures/plot-1.png)<!-- -->
