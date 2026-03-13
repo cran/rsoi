@@ -1,6 +1,6 @@
-9ec7004eafa4a61e2c30af5b48047e18 *DESCRIPTION
+9670245bf281c744f0f3f1d3586be59a *DESCRIPTION
 b1cb883005efd83e30d44ec8124f59d2 *NAMESPACE
-1db04d25057630232032c655f62918b9 *NEWS.md
+2c6f785d3f3ef6b5b5ed9e3bad380cde *NEWS.md
 4ad5dcb114baebe6e212294b80ac0428 *R/download-aao.R
 52acbca5cbc26eef10b9b97fe3cd494d *R/download-ao.R
 acd21000aff13f8bc1c468cf41653f7d *R/download-asymsam.R
@@ -10,7 +10,7 @@ fa677e3b336931c518ca77f66ac4bd39 *R/download-enso.R
 d7048bdb1ce3eb98e5d560299439a394 *R/download-npgo.R
 9096976ff707b2370daf3b8297d7f6fd *R/download-oni.R
 55092b06c5d548b881d055f06b9724d5 *R/download-pdo.R
-a0b6042e05e93bcb6a1edb3b86ac56af *R/download-roni.R
+548c149f53cc11720e22019adaf772e7 *R/download-roni.R
 88538d7d7a48b836ad76a0945eba1a9d *R/download-soi.R
 40d4205a451c6c54bb0279dce2513e85 *R/download_mei.R
 d2c52a3cda110c4b2e455f7490d7a6f6 *R/rsoi-package.R
@@ -35,5 +35,6 @@ da801fa42e531f6fc621c58da9715489 *tests/testthat.R
 0d8613b2429e1af5f845eb56606191ed *tests/testthat/helper.R
 f1c2181d7f011366b5ecded33f2c1fc5 *tests/testthat/test-cache_logic.R
 255fbe6aae1c5f40fe11ca8b7ec46674 *tests/testthat/test-download-oni.R
+7fc61702e3b9e0845fdf93b5ea3dcd99 *tests/testthat/test-download-roni.R
 ff71bcf17a309f9612ceb748b0ccdb4f *tests/testthat/test_download_.R
 47268906fe87f556009520b1767daa8a *tests/testthat/test_download_enso.R

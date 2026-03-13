@@ -1,7 +1,7 @@
 Type: Package
 Package: rsoi
 Title: Import Various Northern and Southern Hemisphere Climate Indices
-Version: 0.5.7
+Version: 0.5.8
 Authors@R: 
     c(person(given = "Sam",
              family = "Albers",
@@ -23,9 +23,9 @@ Encoding: UTF-8
 RoxygenNote: 7.3.3
 BugReports: https://github.com/boshek/rsoi/issues
 NeedsCompilation: no
-Packaged: 2026-03-05 18:53:56 UTC; sam.albers
+Packaged: 2026-03-12 22:45:53 UTC; sam.albers
 Author: Sam Albers [aut, cre],
   Elio Campitelli [ctb]
 Maintainer: Sam Albers <sam.albers@gmail.com>
 Repository: CRAN
-Date/Publication: 2026-03-06 08:20:02 UTC
+Date/Publication: 2026-03-13 08:00:02 UTC
